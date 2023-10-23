@@ -1,66 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Chirpers - A Demo Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Introduction
 
-## About Laravel
+Welcome to **Chirpers**, a demo application inspired by the `Laravel Bootcamp`. It showcases the power of the `PlanCraft` package in action. `Chirpers` emulates a social media platform where users can create and manage "Chirps" within teams. `PlanCraft` seamlessly handles user subscriptions and feature access based on their chosen plan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Chirpers Hero Image](https://realrashid.github.io/plan-craft/assets/hero.3500a2cc.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Plans in Chirpers
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Chirpers offers three distinct subscription plans, each tailored to different user needs:
 
-## Learning Laravel
+### Basic Plan
+- **Price:** $12/month or $129.6/year (Save 10%)
+- **Features:**
+  - Create up to 10 Chirps per team
+  - Create up to 5 Teams
+- **Description:** Basic plan users can create 10 Chirps on each team and have the ability to create up to 5 Teams.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Pro Plan
+- **Price:** $19/month or $205.2/year (Save 10%)
+- **Features:**
+  - Create up to 20 Chirps per team
+  - Create up to 30 Teams
+- **Description:** Pro plan users can create 20 Chirps on each team and have the ability to create up to 30 Teams.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Unlimited Plan
+- **Price:** $50/month or $540/year (Save 10%)
+- **Features:**
+  - Unlimited Chirps
+  - Unlimited Teams
+- **Description:** Unlimited plan users have no restrictions on Chirps or Teams. Create without limitations!
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Screenshots
 
-## Laravel Sponsors
+### Dashboard
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+![Dashboard](https://realrashid.github.io/plan-craft/assets/dashboard.35ba75ff.png)
 
-### Premium Partners
+### Billing Page
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+![Billing Page](https://realrashid.github.io/plan-craft/assets/billing.0aa70524.png)
 
-## Contributing
+### Creating a Chirp
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![Creating a Chirp](https://realrashid.github.io/plan-craft/assets/create.5d584063.png)
 
-## Code of Conduct
+## Billing and Subscriptions
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Viewing and Choosing Plans
 
-## Security Vulnerabilities
+Users can access the billing section to view and select their preferred subscription plan. The available plans are fetched using `PlanCraft` and displayed with their respective details.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Subscribing to a Plan
 
-## License
+When a user chooses a plan and initiates the subscription process, Chirpers leverages Laravel `Cashier-Stripe` to securely handle payment transactions. The selected plan's details are used to create a new subscription associated with the user.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Switching Plans
+
+Chirpers allows users to seamlessly switch between plans. The `switchSubscription` method updates the user's subscription with the newly chosen plan.
+
+### Updating Payment Method
+
+Users can easily update their default payment method through the billing interface.
+
+### Cancelling Subscription
+
+If a user decides to cancel their subscription, Chirpers provides a straightforward process. The `cancelSubscription` method ensures a smooth cancellation experience.
+
+## Chirping Away!
+
+With their subscription in place, users can start chirping within their teams. Chirpers utilizes Laravel's Gate and the `checkEligibility` method from `PlanCraft` to enforce limits on chirp creation, providing a seamless experience.
+
+## Get Started with Chirpers
+
+Ready to experience Chirpers for yourself? Follow the steps below to set up the demo application on your local machine:
+
+1. [Clone the Chirpers Repository](https://realrashid.github.io/plan-craft/demo/get-started.md#step-1-clone-the-repository)
+2. [Install Dependencies](https://realrashid.github.io/plan-craft/demo/get-started.md#step-2-install-dependencies)
+3. [Set Up Environment Variables](https://realrashid.github.io/plan-craft/demo/get-started.md#step-3-set-up-environment-variables)
+4. [Generate Application Key](https://realrashid.github.io/plan-craft/demo/get-started.md#step-4-generate-application-key)
+5. [Migrate the Database](https://realrashid.github.io/plan-craft/demo/get-started.md#step-5-migrate-the-database)
+6. [Start the Application](https://realrashid.github.io/plan-craft/demo/get-started.md#step-7-start-the-application)
+7. [Access the Application](https://realrashid.github.io/plan-craft/demo/get-started.md#step-8-access-the-application)
+8. [Explore and Test](https://realrashid.github.io/plan-craft/demo/get-started.md#step-9-explore-and-test)
+
+[Get Started with Chirpers](https://realrashid.github.io/plan-craft/demo/get-started.md)
+
+---
+
+Note: This is a simulated demo application and not an actual social media platform.
+
+> Built with the Laravel `Jetstream` starter-kit.
